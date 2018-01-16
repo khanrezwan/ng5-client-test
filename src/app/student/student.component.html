@@ -1,0 +1,58 @@
+<mat-card *ngFor="let student of students">
+ 
+    <mat-card-title color="primary">
+        {{student?.studentName}}
+  </mat-card-title>     
+  
+   <mat-card-content>
+     {{student?.emailAddress}}
+   </mat-card-content>
+   <mat-card-content>
+      {{student?.emailAddress}}
+    </mat-card-content>
+   <mat-card-actions>
+     <button mat-raised-button color="primary">update</button>
+     <button mat-raised-button color="warn">delete</button>
+     <button mat-raised-button >Cancel</button>
+   </mat-card-actions>
+  </mat-card>
+  <div class="form-container">
+  
+      <mat-form-field>
+        <input matInput placeholder="Favorite food" value="Sushi">
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput placeholder="Leave a comment">
+      </mat-form-field>
+     
+      <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false" *ngFor="let student of students">
+      
+<mat-expansion-panel-header>
+<mat-panel-title>
+    {{student?.studentName}}
+</mat-panel-title>
+<mat-panel-description>
+ID: {{student?.studentId}}
+</mat-panel-description>
+</mat-expansion-panel-header>
+<ul>
+  <li *ngIf="student.phoneList">
+    <ol title="Phone numbers">
+      <li *ngFor="let item of student.phoneList"> {{item}}</li>>
+    </ol>
+  </li>
+  <li *ngIf="student.addressList">
+      <ol title="Adresse">
+        <li *ngFor="let item of student.addressList"> {{item}}</li>>
+      </ol>
+    </li>
+    <li title="Email">{{student?.emailAddress}}</li>
+  
+  </ul>
+</mat-expansion-panel>
+</mat-accordion>
+  </div>
+
