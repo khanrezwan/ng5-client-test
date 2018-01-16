@@ -11,14 +11,14 @@ import { MatFormFieldControl } from '@angular/material';
 })
 export class StudentComponent implements OnInit {
   students: Student[];
-  test =1;
+  test = 1;
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
-    this.studentService.getAll().subscribe((res)=>{
+    this.studentService.getAll().subscribe((res) => {
       this.students = res;
       console.log(res[0].phoneList);
-    },(err)=>{
+    }, (err) => {
       console.log(err);
     });
   }

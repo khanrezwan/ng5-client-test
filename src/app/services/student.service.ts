@@ -11,7 +11,7 @@ export class StudentService {
   private apiURL = 'api/v1';
   constructor( private httpClient: HttpClient) { }
 
-  getAll():Observable<Student[]> {
+  getAll(): Observable<Student[]> {
     console.log('fired1');
     return this.httpClient.get<Student[]>('http://127.0.0.1:8080/api/v1/students');
     // this.httpClient.get<Student[]>('http://127.0.0.1:8080/api/v1/students').subscribe(data=>{

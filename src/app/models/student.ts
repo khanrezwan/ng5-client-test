@@ -1,5 +1,5 @@
-import { Address } from "./address";
-import { Phone } from "./phone";
+import { Address } from './address';
+import { Phone } from './phone';
 
 export interface Student {
     /*
