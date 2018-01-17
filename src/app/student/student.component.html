@@ -1,33 +1,6 @@
-<mat-card *ngFor="let student of students">
- 
-    <mat-card-title color="primary">
-        {{student?.studentName}}
-  </mat-card-title>     
-  
-   <mat-card-content>
-     {{student?.emailAddress}}
-   </mat-card-content>
-   <mat-card-content>
-      {{student?.emailAddress}}
-    </mat-card-content>
-   <mat-card-actions>
-     <button mat-raised-button color="primary">update</button>
-     <button mat-raised-button color="warn">delete</button>
-     <button mat-raised-button >Cancel</button>
-   </mat-card-actions>
-  </mat-card>
-  <div class="form-container">
-  
-      <mat-form-field>
-        <input matInput placeholder="Favorite food" value="Sushi">
-      </mat-form-field>
-    
-      <mat-form-field>
-        <input matInput placeholder="Leave a comment">
-      </mat-form-field>
-     
+
       <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true"
+<mat-expansion-panel (opened)="panelOpenState = true"
       (closed)="panelOpenState = false" *ngFor="let student of students">
       
 <mat-expansion-panel-header>
@@ -50,9 +23,39 @@ ID: {{student?.studentId}}
       </ol>
     </li>
     <li title="Email">{{student?.emailAddress}}</li>
-  
+   
   </ul>
+  <button mat-raised-button color="primary" (click)="onClickUpdate(student)">update</button>
+     <button mat-raised-button color="warn" (click)="onClickDelete(student)">delete</button>
+     <button mat-raised-button >Cancel</button>
+    <mat-accordion *ngIf="showUpdateForm">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Update {{student?.studentName}}
+                </mat-panel-title>
+                <mat-panel-description>
+                 
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="form-container" >
+  
+                    <mat-form-field >
+                      
+                      <input matInput placeholder="Name" [(ngModel)]="student.studentName" >
+                    </mat-form-field>
+                  
+                    <mat-form-field>
+                      <input matInput type='email' placeholder="E-mail" [(ngModel)]="student.emailAddress">
+                    </mat-form-field>
+                    <button mat-raised-button color="primary">Save</button>
+     <button mat-raised-button color="warn">cancel</button>
+                  </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+     
 </mat-expansion-panel>
 </mat-accordion>
-  </div>
+
 

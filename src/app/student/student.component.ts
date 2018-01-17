@@ -12,6 +12,8 @@ import { MatFormFieldControl } from '@angular/material';
 export class StudentComponent implements OnInit {
   students: Student[];
   test = 1;
+  student: Student;
+  showUpdateForm = false;
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
@@ -23,4 +25,17 @@ export class StudentComponent implements OnInit {
     });
   }
 
+  onClickUpdate(param: Student):void
+  {
+    console.log("update clicked");
+    this.showUpdateForm = true;
+    this.student = param;
+    console.log(param);
+  }
+
+  onClickDelete(param: Student):void{
+    console.log("delete clicked");
+    this.student = param;
+    console.log(param);
+  }
 }
