@@ -1,61 +1,58 @@
+<mat-accordion>
 
-      <mat-accordion>
-<mat-expansion-panel (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false" *ngFor="let student of students">
-      
-<mat-expansion-panel-header>
-<mat-panel-title>
-    {{student?.studentName}}
-</mat-panel-title>
-<mat-panel-description>
-ID: {{student?.studentId}}
-</mat-panel-description>
-</mat-expansion-panel-header>
-<ul>
-  <li *ngIf="student.phoneList">
-    <ol title="Phone numbers">
-      <li *ngFor="let item of student.phoneList"> {{item}}</li>>
-    </ol>
-  </li>
-  <li *ngIf="student.addressList">
-      <ol title="Adresse">
-        <li *ngFor="let item of student.addressList"> {{item}}</li>>
-      </ol>
-    </li>
-    <li title="Email">{{student?.emailAddress}}</li>
-   
-  </ul>
-  <button mat-raised-button color="primary" (click)="onClickUpdate(student)">update</button>
-     <button mat-raised-button color="warn" (click)="onClickDelete(student)">delete</button>
-     <button mat-raised-button >Cancel</button>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngFor="let student of students let i=index">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{student?.studentName}}
+      </mat-panel-title>
+      <mat-panel-description>
+        ID: {{student?.studentId}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <ul>
+      <li *ngIf="student.phoneList">
+        <ol title="Phone numbers">
+          <li *ngFor="let item of student.phoneList"> {{item}}</li>>
+        </ol>
+      </li>
+      <li *ngIf="student.addressList">
+        <ol title="Adresse">
+          <li *ngFor="let item of student.addressList"> {{item}}</li>>
+        </ol>
+      </li>
+      <li title="Email">{{student?.emailAddress}}</li>
+
+    </ul>
+    <button mat-raised-button color="primary" (click)="onClickUpdate(student)">update</button>
+    <button mat-raised-button color="warn" (click)="onClickDelete(student,i)">delete</button>
+    <button mat-raised-button>Cancel</button>
     <mat-accordion *ngIf="showUpdateForm">
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Update {{student?.studentName}}
-                </mat-panel-title>
-                <mat-panel-description>
-                 
-                </mat-panel-description>
-                </mat-expansion-panel-header>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Update {{student?.studentName}}
+          </mat-panel-title>
+          <mat-panel-description>
 
-                <div class="form-container" >
-  
-                    <mat-form-field >
-                      
-                      <input matInput placeholder="Name" [(ngModel)]="student.studentName" >
-                    </mat-form-field>
-                  
-                    <mat-form-field>
-                      <input matInput type='email' placeholder="E-mail" [(ngModel)]="student.emailAddress">
-                    </mat-form-field>
-                    <button mat-raised-button color="primary">Save</button>
-     <button mat-raised-button color="warn">cancel</button>
-                  </div>
-        </mat-expansion-panel>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="form-container">
+
+          <mat-form-field>
+
+            <input matInput placeholder="Name" [(ngModel)]="student.studentName">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type='email' placeholder="E-mail" [(ngModel)]="student.emailAddress">
+          </mat-form-field>
+          <button mat-raised-button color="primary">Save</button>
+          <button mat-raised-button color="warn">cancel</button>
+        </div>
+      </mat-expansion-panel>
     </mat-accordion>
-     
-</mat-expansion-panel>
+
+  </mat-expansion-panel>
 </mat-accordion>
-
-

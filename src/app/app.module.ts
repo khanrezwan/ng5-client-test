@@ -10,12 +10,17 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {StudentService} from './services/student.service';
 import { StudentComponent } from './student/student.component';
+import { CourseComponent } from './course/course.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { DataService } from './services/data.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentComponent
+    StudentComponent,
+    CourseComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,7 @@ import { StudentComponent } from './student/student.component';
     MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [StudentService ],
+  providers: [StudentService, DataService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

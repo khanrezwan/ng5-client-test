@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, Headers, RequestOptions, URLSearchParams} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import {catchError, map, tap} from 'rxjs/operators';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import {Student} from './../models/student';
+import { Student } from './../models/student';
 
 @Injectable()
 export class StudentService {
   private serverURL = 'localhost:8080';
   private apiURL = 'api/v1';
-  constructor( private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getAll(): Observable<Student[]> {
     console.log('fired1');
@@ -19,4 +19,16 @@ export class StudentService {
     // });
 
   }
+  delete(student: Student): boolean {
+    let value: boolean;
+    this.httpClient.delete(`http://127.0.0.1:8080/api/v1/student/${student.studentId}/delete`)
+      .subscribe((res) => {
+        console.log(res);
+        value = true;
+      }, (err) => {
+        console.log(err);
+        value = false;
+      });
+      return value;
+    }
 }
